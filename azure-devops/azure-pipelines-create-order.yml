@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: Ant@1
+  displayName: Execute JMeter script
+  inputs:
+    buildFile: 'build - Create_Order.xml' 
+    publishJUnitResults: false 
+    javaHomeOption: 'JDKVersion' # Options: jDKVersion, path
+
+
+- task: CmdLine@2
+  displayName: Prepare test results
+  inputs:
+    script: |
+      cd D:\a\1\s\results\html
+      dir
+      powershell -command "\"$(Get-Content Create_Order.html)\" > report.html".
+
+- task: FileContenttoVariable@2
+  displayName: Set test results as variable
+  inputs:
+    FilePath: 'D:\a\1\s\results\html\report.html'
+    VariableName: 'html'
+    AddNewlines: false
+    
+- task: PublishTestResults@2
+  displayName: Publish JMeter test results
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'results/unit/Create_Order.xml'
+    testRunTitle: 'Create Order'
+
+- task: SendGrid@1
+  displayName: Send test results to email
+  inputs:
+    sendgridkey: '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'
+    to: 'markocurlinoski.uie@gmail.com'
+    from: 'azure-devops@churlinoski.mk'
+    subject: 'Test'
+    htmlbody: $(html)
+
