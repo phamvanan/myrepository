@@ -32,13 +32,6 @@ steps:
     VariableName: 'html'
     AddNewlines: false
 
-- task: PublishTestResults@2
-  displayName: Publish JMeter test results
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: 'results/unit/Create_Customer.xml'
-    testRunTitle: 'Create Customer'
-
 - task: SendGrid@1
   displayName: Send test results to email
   inputs:
