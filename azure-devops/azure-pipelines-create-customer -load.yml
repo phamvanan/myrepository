@@ -13,7 +13,7 @@ steps:
 - task: Ant@1
   displayName: Execute JMeter script
   inputs:
-    buildFile: 'build - Create_Customer.xml' 
+    buildFile: 'build - Create_Customer -Load.xml' 
     publishJUnitResults: false 
     javaHomeOption: 'JDKVersion' # Options: jDKVersion, path
 
