@@ -35,5 +35,5 @@
        includes="*.jtl"
        style="${basedir}\jmeter-results-detail-report_21-load.xsl"/>
 	</target>
-	<target name="all" depends="test, report, unit"/>
+	<target name="all" depends="test, report"/>
 </project>
