@@ -21,7 +21,7 @@
 		<jmeter
        jmeterhome="${jmeter.home}"
        resultlogdir="results/jtl">
-			<testplans dir="${basedir}/tests/load/Create_Customer" includes="Create_Customer.jmx"/>
+			<testplans dir="${basedir}/tests/load" includes="Create_Customer.jmx"/>
 			<property name="jmeter.save.saveservice.output_format" value="xml"/>
 			<jvmarg value="-Xmx1536m"/>
 		</jmeter>
