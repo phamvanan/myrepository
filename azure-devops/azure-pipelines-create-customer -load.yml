@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+- none
 
 pool:
   vmImage: 'windows-latest'
@@ -13,7 +13,7 @@ steps:
 - task: Ant@1
   displayName: Execute JMeter script
   inputs:
-    buildFile: 'build - Create_Customer.xml' 
+    buildFile: 'build - Create_Customer -Load.xml' 
     publishJUnitResults: false 
     javaHomeOption: 'JDKVersion' # Options: jDKVersion, path
 
@@ -31,13 +31,6 @@ steps:
     FilePath: 'D:\a\1\s\results\html\report.html'
     VariableName: 'html'
     AddNewlines: false
-
-- task: PublishTestResults@2
-  displayName: Publish JMeter test results
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: 'results/unit/Create_Customer.xml'
-    testRunTitle: 'Create Customer'
 
 - task: SendGrid@1
   displayName: Send test results to email
