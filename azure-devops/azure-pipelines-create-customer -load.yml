@@ -42,13 +42,14 @@ steps:
     htmlbody: $(html)
 
 - task: DutchWorkzToolsSendEmail@1
-  inputs:
+    inputs:
     recipients: 'marko@churlinoski.mk'
     fromaddress: 'azure-devops@churlinoski.mk'
     subject: 'Performance Test Results'
-    bodytext: 'testMessage'
+    bodytext: '<h1>testMessage</h1>'
     ashtml: true
     smtphost: 'mail.churlinoski.mk'
-    smtpport: '465'
+    smtpport: '25'
     smtpuser: 'azure-devops@churlinoski.mk'
     smtppass: 'Marko1993.'
+    smtpssl: false
