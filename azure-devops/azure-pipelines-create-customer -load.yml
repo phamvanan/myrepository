@@ -12,7 +12,8 @@ pool:
 steps:
 - task: Ant@1
   displayName: Execute JMeter script
-  inputs:
+  inputs: 
+    options: -Dusers=$(users); -Drampup=$(rampup); -Dduration=$(duration)
     buildFile: 'build - Create_Customer -Load.xml' 
     publishJUnitResults: false 
     javaHomeOption: 'JDKVersion' # Options: jDKVersion, path
