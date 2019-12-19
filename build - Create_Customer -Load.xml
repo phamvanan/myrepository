@@ -22,12 +22,18 @@
 		<mkdir dir="results/html"/>
 	</target>
 	<target name="test" depends="clean">
+		<echo>Users             :${users}</echo>
+		<echo>Ramp Up           :${rampup}</echo>
+		<echo>Duration   		:${duration}</echo>
 		<jmeter
        jmeterhome="${jmeter.home}"
        resultlogdir="results/jtl">
 			<testplans dir="${basedir}/tests/load" includes="Create_Customer.jmx"/>
 			<property name="jmeter.save.saveservice.output_format" value="xml"/>
 			<jvmarg value="-Xmx1536m"/>
+			<property name="users" value="${users}"/>
+			<property name="rampup" value="${rampup}"/>
+			<property name="duration" value="${duration}"/>
 		</jmeter>
 	</target>
 	<!-- This is not needed for the plugin, but it produces a nice html report
