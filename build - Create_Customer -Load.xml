@@ -7,6 +7,10 @@
 		<include name="ant-jmeter-1.1.1.jar"/>
 	  </fileset>
 	</path>
+	<path id="xslt.classpath">
+        <fileset dir="apache-jmeter-4.0\lib" includes="xalan*.jar"/>
+        <fileset dir="apache-jmeter-4.0\lib" includes="serializer*.jar"/>
+    </path>
 	<taskdef
     name="jmeter"
     classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask"
