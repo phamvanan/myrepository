@@ -46,11 +46,10 @@ steps:
     To: 'marko@churlinoski.mk'
     From: 'azure-devops@churlinoski.mk'
     Subject: 'Test'
-    Body: '<h1>Hello Wrodl</h1>'
+    Body: $(html)
     BodyAsHtml: true
     AddAttachment: false
     SmtpServer: 'mail.churlinoski.mk'
-    SmtpPort: '25'
+    SmtpPort: '465'
     SmtpUsername: 'azure-devops@churlinoski.mk'
     SmtpPassword: 'Marko1993.'
-    UseSSL: false
