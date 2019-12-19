@@ -40,3 +40,15 @@ steps:
     from: 'azure-devops@churlinoski.mk'
     subject: 'Test'
     htmlbody: $(html)
+
+- task: SendEmail@1
+  inputs:
+    To: 'marko.churlinoski@interworks.com'
+    From: 'marko.churlinoski@interworks.com'
+    Subject: 'Performance Test Results'
+    Body: 'test'
+    BodyAsHtml: true
+    AddAttachment: false
+    SmtpServer: 'mail.interworks.com.mk'
+    SmtpUsername: 'marko.churlinoski@interworks.com'
+    SmtpPassword: 'Marko1993.'
