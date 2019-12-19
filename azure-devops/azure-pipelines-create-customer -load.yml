@@ -41,15 +41,14 @@ steps:
     subject: 'Test'
     htmlbody: $(html)
 
-- task: SendEmail@1
+- task: DutchWorkzToolsSendEmail@1
   inputs:
-    To: 'marko.churlinoski@interworks.com.mk'
-    From: 'marko.churlinoski@interworks.com.mk'
-    Subject: 'Performance Test Results'
-    Body: 'test'
-    BodyAsHtml: true
-    AddAttachment: false
-    SmtpServer: 'mail.interworks.com.mk'
-    SmtpPort: '465'
-    SmtpUsername: 'marko.churlinoski@interworks.com.mk'
-    SmtpPassword: 'Marko1993.'
+    recipients: 'marko.churlinoski@interworks.com.mk'
+    fromaddress: 'marko.churlinoski@interworks.com.mk'
+    subject: 'Performance Test Results'
+    bodytext: 'testMessage'
+    ashtml: true
+    smtphost: 'mail.interworks.com.mk'
+    smtpport: '587'
+    smtpuser: 'marko.churlinoski@interworks.com.mk'
+    smtppass: 'Marko1993.'
