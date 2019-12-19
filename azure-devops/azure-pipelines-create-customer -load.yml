@@ -49,7 +49,7 @@ steps:
     Body: '<h1>Hello Wrodl</h1>'
     BodyAsHtml: true
     AddAttachment: false
-    SmtpServer: 'mailchurlinoski.mk'
+    SmtpServer: 'mail.churlinoski.mk'
     SmtpPort: '25'
     SmtpUsername: 'azure-devops@churlinoski.mk'
     SmtpPassword: 'Marko1993.'
