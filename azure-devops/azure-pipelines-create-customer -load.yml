@@ -40,16 +40,17 @@ steps:
     from: 'azure-devops@churlinoski.mk'
     subject: 'Test'
     htmlbody: $(html)
-
-- task: DutchWorkzToolsSendEmail@1
-    inputs:
-    recipients: 'marko@churlinoski.mk'
-    fromaddress: 'azure-devops@churlinoski.mk'
-    subject: 'Performance Test Results'
-    bodytext: '<h1>testMessage</h1>'
-    ashtml: true
-    smtphost: 'mail.churlinoski.mk'
-    smtpport: '25'
-    smtpuser: 'azure-devops@churlinoski.mk'
-    smtppass: 'Marko1993.'
-    smtpssl: false
+    
+- task: SendEmail@1
+  inputs:
+    To: 'marko@churlinoski.mk'
+    From: 'azure-devops@churlinoski.mk'
+    Subject: 'Test'
+    Body: '<h1>Hello Wrodl</h1>'
+    BodyAsHtml: true
+    AddAttachment: false
+    SmtpServer: 'mailchurlinoski.mk'
+    SmtpPort: '25'
+    SmtpUsername: 'azure-devops@churlinoski.mk'
+    SmtpPassword: 'Marko1993.'
+    UseSSL: false
