@@ -39,11 +39,16 @@ steps:
     testResultsFiles: 'results/unit/Create_Customer.xml'
     testRunTitle: 'Create Customer'
 
-- task: SendGrid@1
-  displayName: Send test results to email
+- task: SendEmail@1
   inputs:
-    sendgridkey: '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'
-    to: 'marko@churlinoski.mk'
-    from: 'azure-devops@churlinoski.mk'
-    subject: 'Test'
-    htmlbody: $(html)
+    To: 'marko@churlinoski.mk'
+    From: 'azure-devops@churlinoski.mk'
+    Subject: 'Test'
+    Body: '$(html)'
+    BodyAsHtml: true
+    AddAttachment: false
+    SmtpServer: 'mail.churlinoski.mk'
+    SmtpPort: '25'
+    SmtpUsername: 'azure-devops@churlinoski.mk'
+    SmtpPassword: 'Marko1993.'
+    UseSSL: false
