@@ -44,7 +44,7 @@ steps:
   inputs:
     To: 'marko@churlinoski.mk'
     From: 'azure-devops@churlinoski.mk'
-    Subject: 'Test'
+    Subject: 'Create Order'
     Body: '$(html)'
     BodyAsHtml: true
     AddAttachment: false
