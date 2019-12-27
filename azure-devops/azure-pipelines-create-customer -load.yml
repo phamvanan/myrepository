@@ -32,16 +32,7 @@ steps:
     FilePath: 'D:\a\1\s\results\html\report.html'
     VariableName: 'html'
     AddNewlines: false
-
-- task: SendGrid@1
-  displayName: Send test results to email
-  inputs:
-    sendgridkey: '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'
-    to: 'marko@churlinoski.mk'
-    from: 'azure-devops@churlinoski.mk'
-    subject: 'Test'
-    htmlbody: $(html)
-    
+   
 - task: SendEmail@1
   inputs:
     To: 'marko@churlinoski.mk'
