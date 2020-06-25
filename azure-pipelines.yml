@@ -34,14 +34,14 @@ steps:
     AddNewlines: false
 - task: SendEmail@1
   inputs:
-    To: 'marko@churlinoski.mk'
-    From: 'azure-devops@churlinoski.mk'
+    To: 'anpv@mti-tech.vn'
+    From: 'phamvanan@gmail.com'
     Subject: 'Create Customer - Load test'
     Body: '$(html)'
     BodyAsHtml: true
     AddAttachment: false
-    SmtpServer: 'mail.churlinoski.mk'
-    SmtpPort: '25'
-    SmtpUsername: 'azure-devops@churlinoski.mk'
-    SmtpPassword: 'Marko1993.'
-    UseSSL: false
+    SmtpServer: 'smtp.gmail.com'
+    SmtpPort: '587'
+    SmtpUsername: 'phamvanan@gmail.com'
+    SmtpPassword: 'Vanan0506'
+    UseSSL: true
