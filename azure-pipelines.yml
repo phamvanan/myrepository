@@ -1,0 +1,47 @@
+# Ant
+# Build your Java projects and run tests with Apache Ant.
+# Add steps that save build artifacts and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: Ant@1
+  displayName: 'Execute JMeter script'
+  inputs:
+    buildFile: 'build.xml -Create_Customer.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+- task: CmdLine@2
+  displayName: 'Prepare test results'
+  inputs:
+    script: |
+      cd D:\a\1\s\results\html
+      dir
+      powershell -command "\"$(Get-Content Create_Customer.html)\" > report.html"
+- task: FileContenttoVariable@2
+  displayName: Set test results as variable
+  inputs:
+    FilePath: 'D:\a\1\s\results\html\report.html'
+    VariableName: 'html'
+    AddNewlines: false
+- task: SendEmail@1
+  inputs:
+    To: 'marko@churlinoski.mk'
+    From: 'azure-devops@churlinoski.mk'
+    Subject: 'Create Customer - Load test'
+    Body: '$(html)'
+    BodyAsHtml: true
+    AddAttachment: false
+    SmtpServer: 'mail.churlinoski.mk'
+    SmtpPort: '25'
+    SmtpUsername: 'azure-devops@churlinoski.mk'
+    SmtpPassword: 'Marko1993.'
+    UseSSL: false
